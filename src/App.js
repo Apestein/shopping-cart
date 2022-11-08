@@ -1,21 +1,26 @@
+import { Outlet, Link } from "react-router-dom"
+import { FaShoppingCart, FaGithub } from "react-icons/fa"
+import "./styles/index.css"
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <h1>Fake Shop</h1>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="products">Products</Link>
+          <Link to="contacts">Contacts</Link>
+          <FaShoppingCart />
+        </nav>
       </header>
-    </div>
+      <main>
+        <Outlet />
+      </main>
+      <footer>
+        Copyright © 2022 anon <FaGithub />
+      </footer>
+    </>
   )
 }
 
