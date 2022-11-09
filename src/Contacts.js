@@ -1,5 +1,36 @@
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
+import styled from "styled-components"
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 100px;
+  justify-items: center;
+`
+const H2 = styled.h2`
+  grid-column: 1/4;
+  justify-self: center;
+`
 function Contacts() {
-  return <div>Contacts</div>
+  return (
+    <Container>
+      <a
+        href="https://github.com/Apestein"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaGithub />
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <FaLinkedin />
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <FaEnvelope />
+      </a>
+
+      <H2>FakeStore Rodeo Drive 42, Los Angeles USA</H2>
+    </Container>
+  )
 }
 
 export default Contacts
