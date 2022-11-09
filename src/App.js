@@ -1,8 +1,14 @@
 import { Outlet, Link } from "react-router-dom"
 import { FaShoppingCart, FaGithub } from "react-icons/fa"
 import "./styles/index.css"
+import { useState } from "react"
 
 function App() {
+  const [products, setProducts] = useState(async () => {
+    const response = await fetch("https://fakestoreapi.com/products")
+    const data = await response.json()
+    setProducts(data.filter((product) => product.category.includes("clothing")))
+  })
   return (
     <>
       <header>
@@ -15,7 +21,7 @@ function App() {
         </nav>
       </header>
       <main>
-        <Outlet />
+        <Outlet context={[products]} />
       </main>
       <footer>
         Copyright © 2022 anon <FaGithub />
