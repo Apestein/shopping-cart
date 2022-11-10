@@ -12,14 +12,14 @@
 
 main {
   flex: 1;
-  padding: 50px 300px;
+  padding: 5% 15%;
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 300px;
+  padding: 5% 15%;
 }
 
 nav {

@@ -3,25 +3,28 @@ import { FaStar } from "react-icons/fa"
 import { useOutletContext } from "react-router-dom"
 
 const Image = styled.img`
-  width: 100%;
+  height: 100%;
 `
 const Article = styled.article`
   outline: 1px solid black;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 100px;
-  place-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1%;
 `
 const Container2 = styled.div`
+  height: 30vh;
+  margin: 0 auto;
+`
+const Container3 = styled.div`
   height: 100%;
-  //padding: 50px;
-  //display: flex;
-  //align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: start;
 `
 const Button = styled.button`
   font-size: large;
@@ -31,7 +34,7 @@ const Button = styled.button`
 `
 
 function Products() {
-  const [products] = useOutletContext()
+  const [products, handleAdd] = useOutletContext()
   return (
     <Container>
       {products.length &&
@@ -40,13 +43,15 @@ function Products() {
             <Container2>
               <Image src={product.image} alt="product-img" />
             </Container2>
-            <h2>
-              {product.rating.rate}
-              <FaStar style={{ color: "gold" }} />
-            </h2>
-            <h2>{product.title}</h2>
-            <h3>{product.price}$</h3>
-            <Button>Add To Cart</Button>
+            <Container3>
+              <h2>
+                {product.rating.rate}
+                <FaStar style={{ color: "gold" }} />
+              </h2>
+              <h2>{product.title}</h2>
+              <h3>{product.price}$</h3>
+              <Button onClick={() => handleAdd(product.id)}>Add To Cart</Button>
+            </Container3>
           </Article>
         ))}
     </Container>
