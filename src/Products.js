@@ -18,6 +18,7 @@ const Container = styled.div`
 const Container2 = styled.div`
   height: 30vh;
   margin: 0 auto;
+  padding: 25px;
 `
 const Container3 = styled.div`
   height: 100%;
@@ -25,6 +26,7 @@ const Container3 = styled.div`
   flex-direction: column;
   justify-content: space-between;
   justify-items: start;
+  gap: 10px;
 `
 const Button = styled.button`
   font-size: large;
