@@ -62,9 +62,9 @@ function App() {
       <header>
         <h1>Fake Shop</h1>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="products">Products</Link>
-          <Link to="contacts">Contacts</Link>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="products">Products</StyledLink>
+          <StyledLink to="contacts">Contacts</StyledLink>
           <CartWrapper>
             <CartCounter>{cart.length}</CartCounter>
             <FaShoppingCart onClick={showModal} />
@@ -102,6 +102,7 @@ function App() {
           </Button>
         </ModalContent>
       </Modal>
+      <Aside>Test</Aside>
     </>
   )
 }
@@ -163,4 +164,14 @@ const Wrapper = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+`
+const Aside = styled.aside`
+  position: absolute;
+  color: #f7f8f9;
+  background-color: #1f1f1f;
+  height: 100%;
+  width: min(100px, 10%);
+`
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `
