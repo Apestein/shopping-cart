@@ -2,42 +2,7 @@ import { Outlet, Link } from "react-router-dom"
 import { FaShoppingCart, FaGithub } from "react-icons/fa"
 import "./styles/index.css"
 import { useState } from "react"
-import styled, { createGlobalStyle } from "styled-components"
-
-const CartCounter = styled.div`
-  border-radius: 50%;
-  position: absolute;
-  bottom: 0;
-  left: -10px;
-  font-weight: bold;
-  font-size: large;
-  background-color: red;
-`
-const CartWrapper = styled.div`
-  position: relative;
-`
-const Modal = styled.div`
-  display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-`
-const ModalContent = styled.div`
-  position: absolute;
-  right: 0;
-  height: 100%;
-  width: 25%;
-  background-color: white;
-`
-const Container = styled.div``
-const Image = styled.img`
-  width: 250px;
-`
-const Button = styled.button`
-  font-size: 2rem;
-  padding: 10px;
-`
+import styled, { createGlobalStyle, css } from "styled-components"
 
 function App() {
   const [products, setProducts] = useState(async () => {
@@ -88,6 +53,10 @@ function App() {
     if (e.target == modal) modal.style.display = "none"
     if (e.target.classList.contains("close-modal")) modal.style.display = "none"
   }
+
+  function rickRoll() {
+    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")
+  }
   return (
     <>
       <header>
@@ -113,13 +82,22 @@ function App() {
           {cart.map((item) => (
             <Container key={item.id}>
               <Image src={item.image} alt="cart-item" />
-              <Button onClick={(e) => handleQuantity(item.id, e)}>-</Button>
-              <span>{item.quantity}</span>
-              <Button onClick={(e) => handleQuantity(item.id, e)}>+</Button>
+
+              <div>
+                <H3>{item.title.substring(0, 20) + "..."}</H3>
+                <H3>{item.price * item.quantity + "$"}</H3>
+                <Wrapper>
+                  <Button onClick={(e) => handleQuantity(item.id, e)}>-</Button>
+                  <Span>{item.quantity}</Span>
+                  <Button onClick={(e) => handleQuantity(item.id, e)}>+</Button>
+                </Wrapper>
+              </div>
             </Container>
           ))}
-          <Button>Checkout</Button>
-          <Button className="close-modal" onClick={closeModal}>
+          <Button onClick={rickRoll} primary>
+            Checkout
+          </Button>
+          <Button primary className="close-modal" onClick={closeModal}>
             Close
           </Button>
         </ModalContent>
@@ -127,5 +105,62 @@ function App() {
     </>
   )
 }
-
 export default App
+
+const CartCounter = styled.div`
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  font-weight: bold;
+  font-size: large;
+  background-color: red;
+`
+const CartWrapper = styled.div`
+  position: relative;
+`
+const Modal = styled.div`
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+`
+const ModalContent = styled.div`
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: min(500px, 30%);
+  background-color: white;
+  padding: 25px;
+`
+const Container = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 25px;
+`
+const Image = styled.img`
+  min-width: 100px;
+  max-width: 30%;
+`
+const Button = styled.button`
+  font-size: 2rem;
+  width: 50px;
+
+  ${(props) =>
+    props.primary &&
+    css`
+      width: 50%;
+      font-size: 1.5rem;
+    `};
+`
+const H3 = styled.h3``
+const Span = styled.span`
+  font-size: large;
+`
+const Wrapper = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`
