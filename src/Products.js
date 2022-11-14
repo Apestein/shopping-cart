@@ -13,7 +13,8 @@ const Article = styled.article`
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1%;
+  gap: 1rem;
+  height: fit-content;
 `
 const Container2 = styled.div`
   height: 30vh;

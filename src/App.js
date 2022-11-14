@@ -1,5 +1,11 @@
 import { Outlet, Link } from "react-router-dom"
-import { FaShoppingCart, FaGithub } from "react-icons/fa"
+import {
+  FaShoppingCart,
+  FaGithub,
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa"
 import "./styles/index.css"
 import { useState } from "react"
 import styled, { createGlobalStyle, css } from "styled-components"
@@ -60,14 +66,14 @@ function App() {
   return (
     <>
       <header>
-        <h1>Fake Shop</h1>
+        <h1 className="title">Fake Shop</h1>
         <nav>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="products">Products</StyledLink>
           <StyledLink to="contacts">Contacts</StyledLink>
           <CartWrapper>
             <CartCounter>{cart.length}</CartCounter>
-            <FaShoppingCart onClick={showModal} />
+            <FaShoppingCart fontSize="2rem" onClick={showModal} />
           </CartWrapper>
         </nav>
       </header>
@@ -82,7 +88,6 @@ function App() {
           {cart.map((item) => (
             <Container key={item.id}>
               <Image src={item.image} alt="cart-item" />
-
               <div>
                 <H3>{item.title.substring(0, 20) + "..."}</H3>
                 <H3>{item.price * item.quantity + "$"}</H3>
@@ -102,7 +107,11 @@ function App() {
           </Button>
         </ModalContent>
       </Modal>
-      <Aside>Test</Aside>
+      <Aside>
+        <FaFacebook fontSize="2rem" />
+        <FaInstagram fontSize="2rem" />
+        <FaTwitter fontSize="2rem" />
+      </Aside>
     </>
   )
 }
@@ -110,15 +119,21 @@ export default App
 
 const CartCounter = styled.div`
   border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
   position: absolute;
-  bottom: 0;
-  left: -10px;
-  font-weight: bold;
+  top: -10px;
+  right: -10px;
   font-size: large;
-  background-color: red;
+  background-color: rgb(255, 153, 153);
 `
 const CartWrapper = styled.div`
   position: relative;
+  border-radius: 50%;
+  padding: 0.5rem;
+  display: flex;
+  place-content: center;
 `
 const Modal = styled.div`
   display: none;
@@ -166,12 +181,20 @@ const Wrapper = styled.div`
   align-items: center;
 `
 const Aside = styled.aside`
-  position: absolute;
+  position: fixed;
   color: #f7f8f9;
   background-color: #1f1f1f;
   height: 100%;
   width: min(100px, 10%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: end;
+  padding-bottom: 3rem;
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
+  color: #1f1f1f;
+  font-size: 1.25rem;
 `

@@ -29,11 +29,6 @@ body {
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-  padding: 0% 15%;
-}
-
 header {
   display: flex;
   align-items: center;
@@ -41,11 +36,33 @@ header {
   padding: 5% 15%;
 }
 
+h1 {
+  font-family: lemon-milk-bold;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 nav {
   display: flex;
   gap: 50px;
+  align-items: center;
+}
+
+main {
+  flex: 1;
+  padding: 0% 15%;
+}
+
+.hero-title {
+  font-size: 4rem;
 }
 
 footer {
   text-align: center;
+  color: #f7f8f9;
+  background-color: #1f1f1f;
+}
+
+button {
+  font-family: lemon-milk-medium;
 }
