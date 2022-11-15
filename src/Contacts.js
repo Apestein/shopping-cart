@@ -11,22 +11,26 @@ const H2 = styled.h2`
   grid-column: 1/4;
   justify-self: center;
 `
+const A = styled.a`
+  color: #1f1f1f;
+  font-size: 2rem;
+`
 function Contacts() {
   return (
     <Container>
-      <a
+      <A
         href="https://github.com/Apestein"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaGithub />
-      </a>
-      <a href="#" target="_blank" rel="noopener noreferrer">
+      </A>
+      <A href="#" target="_blank" rel="noopener noreferrer">
         <FaLinkedin />
-      </a>
-      <a href="#" target="_blank" rel="noopener noreferrer">
+      </A>
+      <A href="#" target="_blank" rel="noopener noreferrer">
         <FaEnvelope />
-      </a>
+      </A>
 
       <H2>FakeStore Rodeo Drive 42, Los Angeles USA</H2>
     </Container>

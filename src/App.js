@@ -5,6 +5,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaTwitter,
+  FaBars,
 } from "react-icons/fa"
 import "./styles/index.css"
 import { useState } from "react"
@@ -89,8 +90,8 @@ function App() {
             <Container key={item.id}>
               <Image src={item.image} alt="cart-item" />
               <div>
-                <H3>{item.title.substring(0, 20) + "..."}</H3>
-                <H3>{item.price * item.quantity + "$"}</H3>
+                <H3>{item.title}</H3>
+                <h3>{(item.price * item.quantity).toFixed(2) + "$"}</h3>
                 <Wrapper>
                   <Button onClick={(e) => handleQuantity(item.id, e)}>-</Button>
                   <Span>{item.quantity}</Span>
@@ -99,15 +100,16 @@ function App() {
               </div>
             </Container>
           ))}
-          <Button onClick={rickRoll} primary>
+          <Button checkout onClick={rickRoll}>
             Checkout
           </Button>
-          <Button primary className="close-modal" onClick={closeModal}>
+          <Button close className="close-modal" onClick={closeModal}>
             Close
           </Button>
         </ModalContent>
       </Modal>
       <Aside>
+        <FaBars fontSize="2rem" />
         <FaFacebook fontSize="2rem" />
         <FaInstagram fontSize="2rem" />
         <FaTwitter fontSize="2rem" />
@@ -146,7 +148,7 @@ const ModalContent = styled.div`
   position: absolute;
   right: 0;
   height: 100%;
-  width: min(500px, 30%);
+  width: min(500px, 50%);
   background-color: white;
   padding: 25px;
 `
@@ -163,15 +165,40 @@ const Image = styled.img`
 const Button = styled.button`
   font-size: 2rem;
   width: 50px;
-
+  color: #f7f8f9;
+  background-color: #1f1f1f;
+  border: none;
   ${(props) =>
-    props.primary &&
+    props.checkout &&
     css`
+      min-width: fit-content;
       width: 50%;
       font-size: 1.5rem;
+      padding: 0.5rem;
+      background-color: #06d6a0;
+      &:hover {
+        color: #1f1f1f;
+      }
+    `};
+  ${(props) =>
+    props.close &&
+    css`
+      min-width: fit-content;
+      width: 50%;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      background-color: #ef476f;
+      &:hover {
+        color: #1f1f1f;
+      }
     `};
 `
-const H3 = styled.h3``
+const H3 = styled.h3`
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
 const Span = styled.span`
   font-size: large;
 `
@@ -186,12 +213,10 @@ const Aside = styled.aside`
   background-color: #1f1f1f;
   height: 100%;
   width: min(100px, 10%);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  justify-content: end;
-  padding-bottom: 3rem;
+  display: grid;
+  grid-template-rows: 80% 1fr 1fr 1fr;
+  justify-content: center;
+  padding-top: 2rem;
 `
 const StyledLink = styled(Link)`
   text-decoration: none;

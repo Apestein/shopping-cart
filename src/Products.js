@@ -6,9 +6,10 @@ const Image = styled.img`
   height: 100%;
 `
 const Article = styled.article`
-  outline: 1px solid black;
+  outline: 1px solid #1f1f1f50;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
 `
 const Container = styled.div`
   display: grid;
@@ -27,13 +28,25 @@ const Container3 = styled.div`
   flex-direction: column;
   justify-content: space-between;
   justify-items: start;
-  gap: 10px;
+  padding: 0.5rem;
+  gap: 0.5rem;
 `
 const Button = styled.button`
   font-size: large;
   font-weight: bold;
   padding: 10px 0;
   width: 100%;
+  color: #f7f8f9;
+  background-color: #1f1f1f;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  &:hover {
+    color: #fca311;
+  }
+`
+const StyledStar = styled(FaStar)`
+  color: #fca311;
 `
 
 function Products() {
@@ -49,12 +62,12 @@ function Products() {
             <Container3>
               <h2>
                 {product.rating.rate}
-                <FaStar style={{ color: "gold" }} />
+                <StyledStar />
               </h2>
               <h2>{product.title}</h2>
               <h3>{product.price}$</h3>
-              <Button onClick={() => handleAdd(product.id)}>Add To Cart</Button>
             </Container3>
+            <Button onClick={() => handleAdd(product.id)}>Add To Cart</Button>
           </Article>
         ))}
     </Container>
