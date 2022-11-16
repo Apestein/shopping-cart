@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/shopping-cart/static/css/main.53d1d394.css",
-    "main.js": "/shopping-cart/static/js/main.387a8dbf.js",
+    "main.js": "/shopping-cart/static/js/main.8d8d5da2.js",
     "static/media/LEMONMILK-Bold.otf": "/shopping-cart/static/media/LEMONMILK-Bold.ac2b6389ba01ca1f431e.otf",
     "static/media/LEMONMILK-Regular.otf": "/shopping-cart/static/media/LEMONMILK-Regular.55fc24317b9c2b507dd8.otf",
     "static/media/LEMONMILK-Medium.otf": "/shopping-cart/static/media/LEMONMILK-Medium.3d615d9795b5607c2478.otf",
     "index.html": "/shopping-cart/index.html",
     "main.53d1d394.css.map": "/shopping-cart/static/css/main.53d1d394.css.map",
-    "main.387a8dbf.js.map": "/shopping-cart/static/js/main.387a8dbf.js.map"
+    "main.8d8d5da2.js.map": "/shopping-cart/static/js/main.8d8d5da2.js.map"
   },
   "entrypoints": [
     "static/css/main.53d1d394.css",
-    "static/js/main.387a8dbf.js"
+    "static/js/main.8d8d5da2.js"
   ]
 }
