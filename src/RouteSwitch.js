@@ -6,7 +6,7 @@ import Contacts from "./Contacts"
 
 function RouteSwitch() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="shopping-cart">
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
