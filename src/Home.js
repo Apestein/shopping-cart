@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import HeroImg from "./assets/hero-img.png"
 
 function Home() {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ function Home() {
           <p className="rainbow-text">Shop Now</p>
         </Button>
       </Wrapper>
-      <Image src={"assets/hero-img.png"} alt="hero-img" />
+      <Image src={HeroImg} alt="hero-img" />
     </Container>
   )
 }
