@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet, Link, useNavigate } from "react-router-dom"
 import {
   FaShoppingCart,
   FaGithub,
@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa"
 import "./styles/index.css"
 import { useState } from "react"
-import styled, { createGlobalStyle, css } from "styled-components"
+import styled, { css } from "styled-components"
 
 function App() {
   const [products, setProducts] = useState(async () => {
@@ -18,6 +18,16 @@ function App() {
     setProducts(data.filter((product) => product.category.includes("clothing")))
   })
   const [cart, setCart] = useState([])
+  const navigate = useNavigate()
+
+  function cartTotal() {
+    if (!cart.length) return
+    let total = cart.reduce(
+      (previous, current) => previous + current.price * current.quantity,
+      0
+    )
+    return `Total: ${total.toFixed(2)}$`
+  }
 
   function handleAdd(id) {
     const product = products.find((element) => element.id === id)
@@ -58,7 +68,6 @@ function App() {
   function closeModal(e) {
     const modal = document.querySelector(".modal")
     if (e.target == modal) modal.style.display = "none"
-    if (e.target.classList.contains("close-modal")) modal.style.display = "none"
   }
 
   function rickRoll() {
@@ -67,14 +76,20 @@ function App() {
   return (
     <>
       <header>
-        <h1 className="title">Fake Shop</h1>
+        <h1 onClick={() => navigate("/")} className="title">
+          Fake Shop
+        </h1>
         <nav>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="products">Products</StyledLink>
           <StyledLink to="contacts">Contacts</StyledLink>
           <CartWrapper>
             <CartCounter>{cart.length}</CartCounter>
-            <FaShoppingCart fontSize="2rem" onClick={showModal} />
+            <FaShoppingCart
+              className="icon"
+              fontSize="2rem"
+              onClick={showModal}
+            />
           </CartWrapper>
         </nav>
       </header>
@@ -82,10 +97,14 @@ function App() {
         <Outlet context={[products, handleAdd]} />
       </main>
       <footer>
-        Copyright © 2022 anon <FaGithub />
+        Copyright © 2022 Apestein{" "}
+        <FaGithub
+          onClick={() => window.open("https://github.com/Apestein", "_blank")}
+        />
       </footer>
       <Modal onClick={closeModal} className="modal">
         <ModalContent>
+          <H2>Your Cart</H2>
           {cart.map((item) => (
             <Container key={item.id}>
               <Image src={item.image} alt="cart-item" />
@@ -100,19 +119,25 @@ function App() {
               </div>
             </Container>
           ))}
-          <Button checkout onClick={rickRoll}>
-            Checkout
+          <H2>{cartTotal()}</H2>
+          <Button secondary onClick={rickRoll}>
+            <p className="rainbow-text">Checkout</p>
           </Button>
-          <Button close className="close-modal" onClick={closeModal}>
-            Close
+          <Button
+            secondary
+            onClick={() =>
+              (document.querySelector(".modal").style.display = "none")
+            }
+          >
+            <p className="rainbow-text">Close</p>
           </Button>
         </ModalContent>
       </Modal>
       <Aside>
-        <FaBars fontSize="2rem" />
-        <FaFacebook fontSize="2rem" />
-        <FaInstagram fontSize="2rem" />
-        <FaTwitter fontSize="2rem" />
+        <FaBars className="icon" fontSize="2rem" />
+        <FaFacebook className="icon" onClick={rickRoll} fontSize="2rem" />
+        <FaInstagram className="icon" onClick={rickRoll} fontSize="2rem" />
+        <FaTwitter className="icon" onClick={rickRoll} fontSize="2rem" />
       </Aside>
     </>
   )
@@ -149,8 +174,10 @@ const ModalContent = styled.div`
   right: 0;
   height: 100%;
   width: min(500px, 50%);
-  background-color: white;
+  background-color: #f7f8f9;
   padding: 25px;
+  overflow: scroll;
+  animation: 1s slideIn;
 `
 const Container = styled.div`
   display: flex;
@@ -169,28 +196,13 @@ const Button = styled.button`
   background-color: #1f1f1f;
   border: none;
   ${(props) =>
-    props.checkout &&
+    props.secondary &&
     css`
       min-width: fit-content;
       width: 50%;
       font-size: 1.5rem;
       padding: 0.5rem;
-      background-color: #06d6a0;
-      &:hover {
-        color: #1f1f1f;
-      }
-    `};
-  ${(props) =>
-    props.close &&
-    css`
-      min-width: fit-content;
-      width: 50%;
-      font-size: 1.5rem;
-      padding: 0.5rem;
-      background-color: #ef476f;
-      &:hover {
-        color: #1f1f1f;
-      }
+      border: 1px solid #f7f8f9;
     `};
 `
 const H3 = styled.h3`
@@ -222,4 +234,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: #1f1f1f;
   font-size: 1.25rem;
+`
+const H2 = styled.h2`
+  text-align: center;
 `

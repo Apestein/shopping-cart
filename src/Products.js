@@ -16,6 +16,7 @@ const Container = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   height: fit-content;
+  animation: 1s fadeIn;
 `
 const Container2 = styled.div`
   height: 30vh;
@@ -41,9 +42,6 @@ const Button = styled.button`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border: none;
-  &:hover {
-    color: #fca311;
-  }
 `
 const StyledStar = styled(FaStar)`
   color: #fca311;
@@ -67,7 +65,9 @@ function Products() {
               <h2>{product.title}</h2>
               <h3>{product.price}$</h3>
             </Container3>
-            <Button onClick={() => handleAdd(product.id)}>Add To Cart</Button>
+            <Button onClick={() => handleAdd(product.id)}>
+              <p className="rainbow-text">Add To Cart</p>
+            </Button>
           </Article>
         ))}
     </Container>

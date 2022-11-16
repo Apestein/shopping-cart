@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 function Home() {
+  const navigate = useNavigate()
   return (
     <Container>
       <Wrapper>
@@ -12,7 +14,9 @@ function Home() {
           ornare vehicula. Pellentesque habitant morbi tristique senectus et
           netus et malesuada fames ac turpis egestas.
         </p>
-        <Button>Shop Now</Button>
+        <Button onClick={() => navigate("/products")}>
+          <p className="rainbow-text">Shop Now</p>
+        </Button>
       </Wrapper>
       <Image src={"assets/hero-img.png"} alt="hero-img" />
     </Container>
@@ -21,7 +25,9 @@ function Home() {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 1rem;
+  animation: 1s fadeIn;
 `
 const Image = styled.img`
   width: max(300px, 33%);

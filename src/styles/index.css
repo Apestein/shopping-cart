@@ -60,9 +60,49 @@ main {
 footer {
   text-align: center;
   color: #f7f8f9;
-  background-color: #1f1f1f;
+  background: radial-gradient(
+    circle,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
 }
 
 button {
   font-family: lemon-milk-medium;
+}
+
+.icon:hover {
+  transform: scale(1.25);
+}
+
+.rainbow-text:hover {
+  background: radial-gradient(
+    circle,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    translate: 100%;
+  }
+  to {
+    translate: 0%;
+  }
 }

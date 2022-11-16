@@ -6,6 +6,7 @@ const Container = styled.div`
   grid-template-columns: repeat(3, 1fr);
   row-gap: 100px;
   justify-items: center;
+  animation: 1s fadeIn;
 `
 const H2 = styled.h2`
   grid-column: 1/4;
@@ -23,13 +24,21 @@ function Contacts() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <FaGithub />
+        <FaGithub className="icon" />
       </A>
-      <A href="#" target="_blank" rel="noopener noreferrer">
-        <FaLinkedin />
+      <A
+        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaLinkedin className="icon" />
       </A>
-      <A href="#" target="_blank" rel="noopener noreferrer">
-        <FaEnvelope />
+      <A
+        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaEnvelope className="icon" />
       </A>
 
       <H2>FakeStore Rodeo Drive 42, Los Angeles USA</H2>
