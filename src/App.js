@@ -233,7 +233,7 @@ const Aside = styled.aside`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #1f1f1f;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
 `
 const H2 = styled.h2`
   text-align: center;

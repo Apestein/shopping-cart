@@ -7,9 +7,9 @@ function Home() {
   return (
     <Container>
       <Wrapper>
-        <h1 className="hero-title">
+        <H1 className="hero-title">
           Underground Styles Fashion Week Special Sale 99% OFF
-        </h1>
+        </H1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus
           ornare vehicula. Pellentesque habitant morbi tristique senectus et
@@ -31,19 +31,23 @@ const Container = styled.div`
   animation: 1s fadeIn;
 `
 const Image = styled.img`
-  width: max(300px, 33%);
+  width: max(150px, 33%);
 `
 const Button = styled.button`
-  font-size: 2rem;
+  font-size: clamp(1rem, 3vw, 2rem);
   padding: 1rem;
   color: #f7f8f9;
   background-color: #1f1f1f;
   border-radius: 30px 10px;
+  border: none;
 `
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: flex-start;
+`
+const H1 = styled.h1`
+  font-size: clamp(1rem, 4vw, 4rem);
 `
 export default Home

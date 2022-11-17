@@ -41,7 +41,18 @@ const Button = styled.button`
   background-color: #1f1f1f;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  border: none;
+  border: 3px solid transparent;
+  &:active {
+    background: linear-gradient(#1f1f1f, #1f1f1f) padding-box,
+      radial-gradient(
+          circle,
+          rgba(131, 58, 180, 1) 0%,
+          rgba(253, 29, 29, 1) 50%,
+          rgba(252, 176, 69, 1) 100%
+        )
+        border-box;
+    border: 3px solid transparent;
+  }
 `
 const StyledStar = styled(FaStar)`
   color: #fca311;
