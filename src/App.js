@@ -8,20 +8,24 @@ import {
   FaBars,
 } from "react-icons/fa"
 import "./styles/index.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styled, { css } from "styled-components"
 
 function App() {
-  const [products, setProducts] = useState(async () => {
-    const response = await fetch("https://fakestoreapi.com/products")
-    const data = await response.json()
-    setProducts(data.filter((product) => product.category.includes("clothing")))
-  })
+  const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
   const navigate = useNavigate()
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) =>
+        setProducts(
+          data.filter((product) => product.category.includes("clothing"))
+        )
+      )
+  }, [])
 
   function cartTotal() {
-    if (!cart.length) return
     let total = cart.reduce(
       (previous, current) => previous + current.price * current.quantity,
       0
@@ -67,7 +71,7 @@ function App() {
 
   function closeModal(e) {
     const modal = document.querySelector(".modal")
-    if (e.target == modal) modal.style.display = "none"
+    if (e.target === modal) modal.style.display = "none"
   }
 
   function rickRoll() {

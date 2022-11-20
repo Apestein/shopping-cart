@@ -62,25 +62,24 @@ function Products() {
   const [products, handleAdd] = useOutletContext()
   return (
     <Container>
-      {products.length &&
-        products.map((product) => (
-          <Article key={product.id}>
-            <Container2>
-              <Image src={product.image} alt="product-img" />
-            </Container2>
-            <Container3>
-              <h2>
-                {product.rating.rate}
-                <StyledStar />
-              </h2>
-              <h2>{product.title}</h2>
-              <h3>{product.price}$</h3>
-            </Container3>
-            <Button onClick={() => handleAdd(product.id)}>
-              <p className="rainbow-text">Add To Cart</p>
-            </Button>
-          </Article>
-        ))}
+      {products.map((product) => (
+        <Article key={product.id}>
+          <Container2>
+            <Image src={product.image} alt="product-img" />
+          </Container2>
+          <Container3>
+            <h2>
+              {product.rating.rate}
+              <StyledStar />
+            </h2>
+            <h2>{product.title}</h2>
+            <h3>{product.price}$</h3>
+          </Container3>
+          <Button onClick={() => handleAdd(product.id)}>
+            <p className="rainbow-text">Add To Cart</p>
+          </Button>
+        </Article>
+      ))}
     </Container>
   )
 }
