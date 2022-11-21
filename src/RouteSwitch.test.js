@@ -7,18 +7,15 @@ import Products from "./Products"
 import { BrowserRouter } from "react-router-dom"
 import { act } from "react-dom/test-utils"
 
-test("renders heading", () => {
-  const { getByRole } = render(<App />, { wrapper: BrowserRouter })
-  expect(getByRole("heading").textContent).toMatch("Fake Shop")
-})
-
 describe("App component", () => {
   it("renders App base page layout", () => {
     const { container } = render(<App />, { wrapper: BrowserRouter })
     expect(container).toMatchSnapshot()
   })
   it("update cart on click", () => {
-    render(<Products />)
+    render(<App />)
+    //const button = screen.getByRole("button", { name: "Shop Now" })
+    //userEvent.click(button)
     expect(screen.getByRole("article").toBeInTheDocument())
   })
 })
