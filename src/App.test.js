@@ -5,7 +5,8 @@ import App from "./App"
 import Home from "./Home"
 import Products from "./Products"
 import { BrowserRouter } from "react-router-dom"
-import { act } from "react-dom/test-utils"
+import TestRenderer from "react-test-renderer"
+import { MemoryRouter, Routes, Route } from "react-router-dom"
 
 test("renders heading", () => {
   const { getByRole } = render(<App />, { wrapper: BrowserRouter })
@@ -17,8 +18,20 @@ describe("App component", () => {
     const { container } = render(<App />, { wrapper: BrowserRouter })
     expect(container).toMatchSnapshot()
   })
-  it("update cart on click", () => {
-    render(<Products />)
-    expect(screen.getByRole("article").toBeInTheDocument())
+})
+
+describe("Products component", () => {
+  it("renders Products inside App", () => {
+    let renderer = TestRenderer.create(
+      <MemoryRouter initialEntries={["/products"]}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="products" element={<Products />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    )
+
+    expect(renderer.toJSON()).toMatchSnapshot()
   })
 })
