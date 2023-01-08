@@ -102,7 +102,7 @@ function App() {
       </main>
       <footer>
         Copyright © 2022 Apestein{" "}
-        <FaGithub
+        <FaGithubSC
           onClick={() => window.open("https://github.com/Apestein", "_blank")}
         />
       </footer>
@@ -241,4 +241,7 @@ const StyledLink = styled(Link)`
 `
 const H2 = styled.h2`
   text-align: center;
+`
+const FaGithubSC = styled(FaGithub)`
+  cursor: pointer;
 `

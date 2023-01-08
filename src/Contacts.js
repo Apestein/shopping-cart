@@ -26,18 +26,10 @@ function Contacts() {
       >
         <FaGithub className="icon" />
       </A>
-      <A
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <A>
         <FaLinkedin className="icon" />
       </A>
-      <A
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <A>
         <FaEnvelope className="icon" />
       </A>
 
